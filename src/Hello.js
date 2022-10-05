@@ -8,15 +8,13 @@ const Header = styled.div`
   justify-content: center;
 `;
 
-class Hello extends Component {
-  render() {
-    return (
-      <div>
-        <Header>Hello world</Header>
-        <p>{this.props.greeting}</p>
-      </div>
-    );
-  }
-}
+const Hello = (props) => {
+  return (
+    <div>
+      <Header>Hello world</Header>
+      <p>{props.greeting}</p>
+    </div>
+  );
+};
 
 export default Hello;
