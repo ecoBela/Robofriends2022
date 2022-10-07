@@ -8,13 +8,13 @@ const Container = styled.div`
 `;
 
 const CardList = ({ robots }) => {
-  const cardComponent = robots.map((robot) => {
-    return <Card name={robot.name} email={robot.email} id={robot.id} />;
-  });
-
   return (
     <div>
-      <Container>{cardComponent}</Container>
+      <Container>
+        {robots.map((robot) => {
+          return <Card key={robot.id} name={robot.name} email={robot.email} />;
+        })}
+      </Container>
     </div>
   );
 };

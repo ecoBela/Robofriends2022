@@ -16,11 +16,11 @@ const Image = styled.img`
   height: auto;
 `;
 
-const Card = ({ name, email, id }) => {
+const Card = ({ name, email, key }) => {
   return (
     <div>
       <Container>
-        <Image src={`https://robohash.org/${id}`} alt="profile"></Image>
+        <Image src={`https://robohash.org/${key}`} alt="profile"></Image>
         <div>
           <h2>{name}</h2>
           <p>{email}</p>
