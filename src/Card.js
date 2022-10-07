@@ -6,24 +6,24 @@ from {background-color: lightskyblue;}
   to {background-color: lightseagreen;}
 `;
 const Container = styled.div`
-  animation: ${CardAnimation} 3s infinite;
+  animation: ${CardAnimation} 5s infinite;
   padding: 10px;
   margin: 10px;
 `;
 
 const Image = styled.img`
-  width: 200px;
-  height: 200px;
+  width: auto;
+  height: auto;
 `;
 
-const Card = () => {
+const Card = ({ name, email, id }) => {
   return (
     <div>
       <Container>
-        <Image src="https://robohash.org/test" alt="profile"></Image>
+        <Image src={`https://robohash.org/${id}`} alt="profile"></Image>
         <div>
-          <h2>Jane Doe</h2>
-          <p>jane.doe@gmail.com</p>
+          <h2>{name}</h2>
+          <p>{email}</p>
         </div>
       </Container>
     </div>
