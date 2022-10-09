@@ -1,9 +1,20 @@
 import React from "react";
+import styled from "styled-components";
 
-const Searchbox = () => {
+const Container = styled.div`
+  margin: 10px;
+`;
+
+const Searchbox = ({ searchChange }) => {
   return (
     <div>
-      <input type="search" placeholder="Search Robots" />
+      <Container>
+        <input
+          type="search"
+          placeholder="Search Robots"
+          onChange={searchChange}
+        />
+      </Container>
     </div>
   );
 };
