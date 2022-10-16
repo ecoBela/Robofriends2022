@@ -5,6 +5,7 @@ import Card from "./Card";
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 `;
 
 const CardList = ({ robots }) => {

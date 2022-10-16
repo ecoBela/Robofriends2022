@@ -9,6 +9,11 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 10px;
+  background-image: linear-gradient(
+    to right,
+    rgba(55, 100, 200, 255),
+    rgba(100, 200, 80, 255)
+  );
 `;
 
 class App extends Component {

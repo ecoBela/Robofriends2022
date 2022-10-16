@@ -8,6 +8,7 @@ from {background-color: lightskyblue;}
 const Container = styled.div`
   animation: ${CardAnimation} 5s infinite;
   padding: 10px;
+  margin: 10px;
 `;
 
 const Image = styled.img`
