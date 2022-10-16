@@ -3,6 +3,7 @@ import styled from "styled-components";
 import CardList from "../components/CardList";
 import Scroll from "../components/Scroll";
 import Searchbox from "../components/Searchbox";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 const Container = styled.div`
   display: flex;
@@ -49,7 +50,9 @@ class App extends Component {
           <h1>Robofriends</h1>
           <Searchbox searchChange={this.onSearchChange} />
           <Scroll>
-            <CardList robots={filteredRobots} />;
+            <ErrorBoundary>
+              <CardList robots={filteredRobots} />
+            </ErrorBoundary>
           </Scroll>
         </Container>
       </div>
