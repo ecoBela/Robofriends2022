@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import CardList from "../components/CardList";
 import Scroll from "../components/Scroll";
@@ -17,47 +17,39 @@ const Container = styled.div`
   );
 `;
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      robots: [],
-      searchfield: "",
-    };
-  }
+const App = () => {
+  const [robots, setRobots] = useState([]);
+  const [searchfield, setSearchfield] = useState("");
 
-  componentDidMount() {
+  useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
-      .then((users) => this.setState({ robots: users }));
-  }
+      .then((users) => setRobots(users));
+  }, []);
 
-  onSearchChange = (event) => {
-    this.setState({ searchfield: event.target.value });
+  const filteredRobots = robots.filter((robot) => {
+    return robot.name.toLowerCase().includes(searchfield.toLowerCase());
+  });
+
+  const onSearchChange = (event) => {
+    setSearchfield(event.target.value);
   };
 
-  render() {
-    const { robots, searchfield } = this.state;
-
-    const filteredRobots = robots.filter((robot) => {
-      return robot.name.toLowerCase().includes(searchfield.toLowerCase());
-    });
-    return !robots.length ? (
-      <h1>Loading...</h1>
-    ) : (
-      <div>
-        <Container>
-          <h1>Robofriends</h1>
-          <Searchbox searchChange={this.onSearchChange} />
-          <Scroll>
-            <ErrorBoundary>
-              <CardList robots={filteredRobots} />
-            </ErrorBoundary>
-          </Scroll>
-        </Container>
-      </div>
-    );
-  }
-}
+  return !robots.length ? (
+    <h1>Loading...</h1>
+  ) : (
+    <div>
+      <Container>
+        <h1>Robofriends</h1>
+        <Searchbox searchChange={onSearchChange} />
+        <Scroll>
+          <ErrorBoundary>
+            <CardList robots={filteredRobots} />
+          </ErrorBoundary>
+        </Scroll>
+      </Container>
+    </div>
+  );
+};
 
 export default App;
