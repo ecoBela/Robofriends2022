@@ -2,17 +2,19 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import { createStore } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 
 import App from "./containers/App";
 import { searchRobots } from "./reducers";
 
-const store = createStore(
-  searchRobots,
+const composedEnhancers = compose(
+  applyMiddleware(thunk),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
+const store = createStore(searchRobots, composedEnhancers);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
