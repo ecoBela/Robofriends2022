@@ -8,7 +8,10 @@ import { Provider } from "react-redux";
 import App from "./containers/App";
 import { searchRobots } from "./reducers";
 
-const store = createStore(searchRobots);
+const store = createStore(
+  searchRobots,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
