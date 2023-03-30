@@ -10,8 +10,8 @@ import App from "./containers/App";
 import { searchRobots } from "./reducers";
 
 const composedEnhancers = compose(
-  applyMiddleware(thunk),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  applyMiddleware(thunk)
 );
 
 const store = createStore(searchRobots, composedEnhancers);
