@@ -5,7 +5,7 @@ import CardList from "../components/CardList";
 import Scroll from "../components/Scroll";
 import Searchbox from "../components/Searchbox";
 import ErrorBoundary from "../components/ErrorBoundary";
-import { setSearchfield, requestRobots } from "../actions";
+import { setSearchfield, setRobots } from "../actions";
 
 const Container = styled.div`
   display: flex;
@@ -20,16 +20,16 @@ const Container = styled.div`
 `;
 
 const App = () => {
-  const { searchfield } = useSelector();
-  const { robots, isPending } = useSelector((state) => state.requestRobots);
   const dispatch = useDispatch();
+  const { searchfield } = useSelector((state) => state.searchRobots);
+  const { robots, isPending } = useSelector((state) => state.requestRobots);
 
   const onSearchChange = (event) => {
     dispatch(setSearchfield(event.target.value));
   };
 
   const onRequestRobots = () => {
-    dispatch(requestRobots());
+    dispatch(setRobots());
   };
   const filteredRobots = robots.filter((robot) => {
     return robot.name.toLowerCase().includes(searchfield.toLowerCase());
