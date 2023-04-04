@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
+import logger from "redux-logger";
 import {
   legacy_createStore as createStore,
   applyMiddleware,
@@ -19,7 +20,7 @@ const rootReducer = combineReducers({ searchRobots, requestRobots });
 //   applyMiddleware(thunk)
 // );
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
